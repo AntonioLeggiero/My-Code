@@ -1,0 +1,62 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+
+
+def crea_lista_parole(A):
+    
+    O=[]
+    D=[]
+    C=[]
+    
+    for i in range (len(A)):
+        for j in range (len(A)):
+            for k in range (len(A)):
+                
+                #Creo lista parole ordinate
+                if i<=j and j<k or i<j and j<=k:
+                    O.append(str(A[i])+str(A[j])+str(A[k]))
+                
+                #Creo lista parole ordinate in modo inverso
+                elif i>=j and j>k or i>j and j>=k:
+                    D.append(str(A[i])+str(A[j])+str(A[k]))
+                            
+                #Le restanti sono caotiche                       
+                else:
+                    C.append(str(A[i])+str(A[j])+str(A[k]))
+    return [O,D,C]
+
+
+def main():
+    import sys
+    import numpy as np
+
+    #Alfabeto   
+    A=['a','b','c','d','e','f','g','h','i','l','j','k','m','n','o','p','q','r','s','t','u','v','z','x','y','w']
+    
+    L=crea_lista_parole(A)
+    
+    
+        
+    print("parole totali: "+str(len(L[0])+len(L[1])+len(L[2])))    
+    print("\nparole ORDINATE: "+str(len(L[0])))
+    print(L[0])
+    print("\n")
+    
+    print("parole DISORDINATE: "+str(len(L[1])))
+    print(L[1])
+    print("\n")
+    
+    print("parole CAOTICHE: "+str(len(L[2])))
+    print(L[2])
+    print("\n")
+                
+    
+
+
+
+if __name__ == '__main__':
+    main()
